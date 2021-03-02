@@ -7,13 +7,21 @@ use elrond_wasm::types::TokenIdentifier;
 impl CallValueApi<RustBigUint> for TxContext {
 	fn check_not_payable(&self) {
 		if self.egld_value() > 0 {
+<<<<<<< Updated upstream
 			panic!(TxPanic {
+=======
+			std::panic::panic_any(TxPanic {
+>>>>>>> Stashed changes
 				status: 10,
 				message: err_msg::NON_PAYABLE_FUNC_EGLD.to_vec(),
 			});
 		}
 		if self.esdt_value() > 0 {
+<<<<<<< Updated upstream
 			panic!(TxPanic {
+=======
+			std::panic::panic_any(TxPanic {
+>>>>>>> Stashed changes
 				status: 10,
 				message: err_msg::NON_PAYABLE_FUNC_ESDT.to_vec(),
 			});

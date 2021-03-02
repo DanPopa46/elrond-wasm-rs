@@ -52,7 +52,11 @@ impl TxContext {
 impl SendApi<RustBigUint> for TxContext {
 	fn direct_egld(&self, to: &Address, amount: &RustBigUint, _data: &[u8]) {
 		if &amount.value() > &self.get_available_egld_balance() {
+<<<<<<< Updated upstream
 			panic!(TxPanic {
+=======
+			std::panic::panic_any(TxPanic {
+>>>>>>> Stashed changes
 				status: 10,
 				message: b"failed transfer (insufficient funds)".to_vec(),
 			});
@@ -87,7 +91,11 @@ impl SendApi<RustBigUint> for TxContext {
 		_arg_buffer: &ArgBuffer,
 	) {
 		if &amount.value() > &self.get_available_esdt_balance(token) {
+<<<<<<< Updated upstream
 			panic!(TxPanic {
+=======
+			std::panic::panic_any(TxPanic {
+>>>>>>> Stashed changes
 				status: 10,
 				message: b"insufficient funds".to_vec(),
 			});
@@ -110,7 +118,11 @@ impl SendApi<RustBigUint> for TxContext {
 			call_data: data.to_vec(),
 			tx_hash: self.get_tx_hash(),
 		});
+<<<<<<< Updated upstream
 		panic!(tx_output)
+=======
+		std::panic::panic_any(tx_output)
+>>>>>>> Stashed changes
 	}
 
 	fn deploy_contract(
